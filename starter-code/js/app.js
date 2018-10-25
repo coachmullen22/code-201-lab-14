@@ -7,10 +7,16 @@ var Cart = function(items) {
 };
 
 Cart.prototype.addItem = function(product, quantity) {
-  // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+  var item = new CartItem(product, quantity);
+  this.items.push(item)
+  // for (var i = 0; i < Product.allProducts.length; i++) {
+  //   if (product === Product.allProducts[i]) {
+  //     new Cart(Product.allProducts[i].name);
+  //   }
+  
 };
-
 Cart.prototype.saveToLocalStorage = function() {
+  localStorage.saveCart = JSON.stringify(cart);
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
 };
 
@@ -22,7 +28,9 @@ Cart.prototype.removeItem = function(item) {
 var CartItem = function(product, quantity) {
   this.product = product;
   this.quantity = quantity;
+  CartItem.allProducts.push(this); //May remove later
 };
+CartItem.allProducts = [];
 
 // Product constructor.
 var Product = function(filePath, name) {
