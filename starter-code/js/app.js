@@ -7,11 +7,13 @@ var Cart = function(items) {
 };
 
 Cart.prototype.addItem = function(product, quantity) {
-  // TODO: Fill in this instance method to create a new CartItem and add it to this.items
-};
+  var item = new CartItem(product, quantity);
+  this.items.push(item)
 
+  
+};
 Cart.prototype.saveToLocalStorage = function() {
-  // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  localStorage.saveCart = JSON.stringify(cart);
 };
 
 Cart.prototype.removeItem = function(item) {
@@ -53,6 +55,12 @@ function generateCatalog() {
   new Product('assets/usb.gif', 'USB');
   new Product('assets/water-can.jpg', 'Water Can');
   new Product('assets/wine-glass.jpg', 'Wine Glass');
+}
+
+function createElement(type, content, parent) {
+  var element=document.createElement(type);
+  element.innerHTML=content;
+  parent.appendChild(element);
 }
 
 // Initialize the app by creating the big list of products with images and names
